@@ -1,0 +1,1 @@
+{"columns": ["Model", "PR AUC Score"], "data": [["Random Forest", 0.8788151414052637], ["RF with SMOTE", 0.8763785025217884], ["XGBoost", 0.8711531346712216]]}

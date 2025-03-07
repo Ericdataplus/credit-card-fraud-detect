@@ -1,0 +1,38 @@
+{
+  "os":  "Windows-11-10.0.26100-SP0",
+  "python":  "CPython 3.12.9",
+  "startedAt":  "2025-03-07T18:54:35.730275Z",
+  "program":  "c:\\Users\\wheel\\Documents\\repos\\credit-card-fraud-detect\\script.ipynb",
+  "codePath":  "script.ipynb",
+  "email":  "inspacewheelz@gmail.com",
+  "root":  "c:\\Users\\wheel\\Documents\\repos\\credit-card-fraud-detect",
+  "host":  "DESKTOP-1G5J6GV",
+  "executable":  "C:\\Users\\wheel\\AppData\\Local\\Microsoft\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\python.exe",
+  "codePathLocal":  "script.ipynb",
+  "cpu_count":  6,
+  "cpu_count_logical":  12,
+  "gpu":  "NVIDIA GeForce RTX 3060",
+  "gpu_count":  1,
+  "disk":  {
+    "/":  {
+      "total":  "499328741376",
+      "used":  "380403425280"
+    }
+  },
+  "memory":  {
+    "total":  "68501233664"
+  },
+  "cpu":  {
+    "count":  6,
+    "countLogical":  12
+  },
+  "gpu_nvidia":  [
+    {
+      "name":  "NVIDIA GeForce RTX 3060",
+      "memoryTotal":  "12884901888",
+      "cudaCores":  3584,
+      "architecture":  "Ampere"
+    }
+  ],
+  "cudaVersion":  "12.8"
+}
