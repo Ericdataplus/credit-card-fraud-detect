@@ -5,3 +5,8 @@ seaborn
 scikit-learn
 xgboost
 imbalanced-learn
+tensorflow
+wandb
+python-dotenv
+catboost
+lightgbm
