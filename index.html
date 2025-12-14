@@ -416,6 +416,57 @@
             color: var(--text-white);
             text-decoration: none;
         }
+
+        /* Lightbox Modal */
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .lightbox.active {
+            display: flex;
+        }
+
+        .lightbox img {
+            max-width: 95%;
+            max-height: 95%;
+            border-radius: 8px;
+            box-shadow: 0 0 60px rgba(0, 0, 0, 0.8);
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            font-size: 40px;
+            color: #fff;
+            cursor: pointer;
+            transition: transform 0.2s;
+            z-index: 1001;
+        }
+
+        .lightbox-close:hover {
+            transform: scale(1.2);
+            color: #ff6b6b;
+        }
+
+        .viz-item img {
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .viz-item img:hover {
+            transform: scale(1.02);
+        }
     </style>
 </head>
 
@@ -661,6 +712,24 @@
             Python | XGBoost | PyTorch | Scikit-learn | Optuna | December 2024
         </p>
     </footer>
+
+    <!-- Lightbox Modal -->
+    <div class="lightbox" id="lightbox">
+        <span class="lightbox-close" id="lightbox-close">&times;</span>
+        <img id="lightbox-img" src="" alt="Expanded view">
+    </div>
+
+    <script>
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightbox-img');
+        const lightboxClose = document.getElementById('lightbox-close');
+        document.querySelectorAll('.viz-item img').forEach(img => {
+            img.addEventListener('click', () => { lightboxImg.src = img.src; lightbox.classList.add('active'); document.body.style.overflow = 'hidden'; });
+        });
+        lightboxClose.addEventListener('click', (e) => { e.stopPropagation(); lightbox.classList.remove('active'); document.body.style.overflow = 'auto'; });
+        lightbox.addEventListener('click', (e) => { if (e.target === lightbox) { lightbox.classList.remove('active'); document.body.style.overflow = 'auto'; } });
+        document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && lightbox.classList.contains('active')) { lightbox.classList.remove('active'); document.body.style.overflow = 'auto'; } });
+    </script>
 </body>
 
 </html>
