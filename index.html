@@ -717,6 +717,65 @@
             .vs-divider {
                 display: none;
             }
+
+            /* Hide desktop graphs on mobile */
+            .desktop-viz {
+                display: none !important;
+            }
+
+            /* Show mobile gallery */
+            .mobile-gallery {
+                display: block !important;
+            }
+        }
+
+        /* Mobile Gallery - hidden on desktop */
+        .mobile-gallery {
+            display: none;
+            padding: 20px 15px;
+        }
+
+        .mobile-gallery h2 {
+            text-align: center;
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: var(--text-white);
+        }
+
+        .mobile-graphs {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+
+        .mobile-graph-item {
+            background: var(--bg-card);
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .mobile-graph-item.full-width {
+            grid-column: span 2;
+        }
+
+        .mobile-graph-item img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .mobile-graph-label {
+            padding: 8px 10px;
+            font-size: 0.75rem;
+            color: var(--text-gray);
+            text-align: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        /* Desktop viz sections */
+        .desktop-viz {
+            display: block;
         }
     </style>
 </head>
@@ -765,14 +824,45 @@
         </div>
     </section>
 
-    <!-- Click Hint -->
-    <div
+    <!-- Click Hint (Desktop only) -->
+    <div class="desktop-viz"
         style="text-align: center; padding: 12px; background: rgba(255,255,255,0.03); color: #8b949e; font-size: 0.85rem; border-bottom: 1px solid rgba(255,255,255,0.05);">
         💡 Click any graph to expand • Click again to close
     </div>
 
-    <!-- ML Results - Featured -->
-    <section class="section">
+    <!-- Mobile Gallery (Phone only - shows optimized graphs) -->
+    <section class="mobile-gallery">
+        <h2>📊 Key Insights</h2>
+        <div class="mobile-graphs">
+            <div class="mobile-graph-item full-width">
+                <img src="graphs_mobile/01_fraud_rate.png" alt="Fraud Rate">
+                <div class="mobile-graph-label">Dataset Overview</div>
+            </div>
+            <div class="mobile-graph-item full-width">
+                <img src="graphs_mobile/02_winner.png" alt="Winner Model">
+                <div class="mobile-graph-label">Best Model</div>
+            </div>
+            <div class="mobile-graph-item full-width">
+                <img src="graphs_mobile/03_top_models.png" alt="Top 5 Models">
+                <div class="mobile-graph-label">Model Rankings</div>
+            </div>
+            <div class="mobile-graph-item full-width">
+                <img src="graphs_mobile/04_comparison.png" alt="XGBoost vs Deep Learning">
+                <div class="mobile-graph-label">Why XGBoost Won</div>
+            </div>
+            <div class="mobile-graph-item full-width">
+                <img src="graphs_mobile/05_features.png" alt="Top Features">
+                <div class="mobile-graph-label">Fraud Indicators</div>
+            </div>
+            <div class="mobile-graph-item full-width">
+                <img src="graphs_mobile/06_summary.png" alt="Key Takeaways">
+                <div class="mobile-graph-label">Key Takeaways</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ML Results - Featured (Desktop only) -->
+    <section class="section desktop-viz">
         <div class="section-header">
             <h2>Complete ML Results</h2>
             <p>12 models tested. One winner.</p>
@@ -800,8 +890,8 @@
         </div>
     </div>
 
-    <!-- Data Analysis -->
-    <section class="section">
+    <!-- Data Analysis (Desktop only) -->
+    <section class="section desktop-viz">
         <div class="section-header">
             <h2>Data Exploration</h2>
             <p>Understanding the patterns</p>
@@ -852,8 +942,8 @@
         </div>
     </section>
 
-    <!-- Winner -->
-    <section class="section">
+    <!-- Winner (Desktop only) -->
+    <section class="section desktop-viz">
         <div class="winner-section">
             <div class="winner-badge">&#127942;</div>
             <h2>XGBoost Wins</h2>
@@ -873,8 +963,8 @@
         </div>
     </section>
 
-    <!-- Model Deep Dive -->
-    <section class="section">
+    <!-- Model Deep Dive (Desktop only) -->
+    <section class="section desktop-viz">
         <div class="section-header">
             <h2>Model Analysis</h2>
             <p>Understanding what drives the predictions</p>
@@ -946,8 +1036,8 @@
         </div>
     </section>
 
-    <!-- Summary Dashboard -->
-    <section class="section">
+    <!-- Summary Dashboard (Desktop only) -->
+    <section class="section desktop-viz">
         <div class="section-header">
             <h2>Summary Dashboard</h2>
             <p>The complete picture</p>
