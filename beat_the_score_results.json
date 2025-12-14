@@ -1,0 +1,9 @@
+{
+  "CatBoost": 0.7413896741281131,
+  "LightGBM": 0.5594613506124002,
+  "XGBoost": 0.7811241815712531,
+  "RF_SMOTE_Tomek": 0.8372867396470474,
+  "Weighted_Ensemble": 0.8322023548942641,
+  "Stacking_Ensemble": 0.8333101458799274,
+  "Rank_Ensemble": 0.805629399478708
+}
