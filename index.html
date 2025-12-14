@@ -36,7 +36,7 @@
             overflow-x: hidden;
         }
 
-        /* Hero - Full Impact */
+        /* Hero */
         .hero {
             min-height: 100vh;
             display: flex;
@@ -49,24 +49,6 @@
                 radial-gradient(circle at 20% 20%, rgba(255, 215, 0, 0.1) 0%, transparent 40%),
                 radial-gradient(circle at 80% 80%, rgba(255, 71, 87, 0.1) 0%, transparent 40%),
                 var(--bg-dark);
-            position: relative;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text y=".9em" font-size="90" opacity="0.02">💳</text></svg>') repeat;
-            background-size: 150px;
-            pointer-events: none;
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 1;
         }
 
         .hero-badge {
@@ -100,7 +82,7 @@
             margin: 0 auto 50px;
         }
 
-        /* Giant Score Display */
+        /* Score Circle */
         .score-display {
             display: flex;
             align-items: center;
@@ -117,7 +99,6 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            position: relative;
             box-shadow: 0 0 60px rgba(0, 255, 136, 0.3);
             animation: pulse 2s ease-in-out infinite;
         }
@@ -182,7 +163,6 @@
             letter-spacing: 1px;
         }
 
-        /* Scroll indicator */
         .scroll-hint {
             position: absolute;
             bottom: 40px;
@@ -209,22 +189,22 @@
             stroke: var(--text-gray);
         }
 
-        /* Visual Sections */
+        /* Sections */
         .section {
-            padding: 100px 20px;
+            padding: 80px 20px;
             max-width: 1400px;
             margin: 0 auto;
         }
 
         .section-header {
             text-align: center;
-            margin-bottom: 60px;
+            margin-bottom: 50px;
         }
 
         .section-header h2 {
-            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-size: clamp(2rem, 5vw, 3rem);
             font-weight: 800;
-            margin-bottom: 15px;
+            margin-bottom: 10px;
         }
 
         .section-header p {
@@ -232,11 +212,11 @@
             font-size: 1.1rem;
         }
 
-        /* Image Grid - Visual Focus */
+        /* Viz Grid */
         .viz-showcase {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
-            gap: 30px;
+            gap: 25px;
         }
 
         @media (max-width: 500px) {
@@ -247,14 +227,14 @@
 
         .viz-item {
             background: var(--bg-card);
-            border-radius: 20px;
+            border-radius: 16px;
             overflow: hidden;
             transition: transform 0.3s, box-shadow 0.3s;
             border: 1px solid rgba(255, 255, 255, 0.05);
         }
 
         .viz-item:hover {
-            transform: translateY(-5px) scale(1.01);
+            transform: translateY(-5px);
             box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
         }
 
@@ -268,109 +248,41 @@
         }
 
         .viz-caption {
-            padding: 20px 25px;
+            padding: 16px 20px;
             display: flex;
             align-items: center;
-            gap: 15px;
+            gap: 12px;
         }
 
         .viz-icon {
-            width: 45px;
-            height: 45px;
-            border-radius: 12px;
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.5rem;
+            font-size: 1.2rem;
             flex-shrink: 0;
         }
 
         .viz-caption h3 {
-            font-size: 1.1rem;
+            font-size: 1rem;
             font-weight: 600;
-            margin-bottom: 4px;
+            margin-bottom: 2px;
         }
 
         .viz-caption p {
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             color: var(--text-gray);
         }
 
-        /* Winner Announcement */
-        .winner-section {
-            background: linear-gradient(135deg, rgba(255, 215, 0, 0.1), transparent);
-            border-radius: 30px;
-            padding: 80px 40px;
-            text-align: center;
-            border: 1px solid rgba(255, 215, 0, 0.2);
-            margin: 100px auto;
-            max-width: 900px;
-        }
-
-        .winner-badge {
-            font-size: 4rem;
-            margin-bottom: 20px;
-        }
-
-        .winner-section h2 {
-            font-size: 2.5rem;
-            font-weight: 800;
-            margin-bottom: 15px;
-            color: var(--accent-gold);
-        }
-
-        .winner-section p {
-            font-size: 1.2rem;
-            color: var(--text-gray);
-            max-width: 600px;
-            margin: 0 auto 30px;
-        }
-
-        .vs-comparison {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 40px;
-            flex-wrap: wrap;
-            margin-top: 40px;
-        }
-
-        .vs-item {
-            text-align: center;
-            padding: 30px;
-            background: rgba(0, 0, 0, 0.3);
-            border-radius: 20px;
-            min-width: 200px;
-        }
-
-        .vs-item.winner {
-            background: linear-gradient(135deg, rgba(0, 255, 136, 0.2), rgba(0, 255, 136, 0.05));
-            border: 2px solid var(--accent-green);
-        }
-
-        .vs-score {
-            font-size: 2.5rem;
-            font-weight: 900;
-        }
-
-        .vs-name {
-            font-size: 0.9rem;
-            color: var(--text-gray);
-            margin-top: 5px;
-        }
-
-        .vs-divider {
-            font-size: 1.5rem;
-            color: var(--text-gray);
-        }
-
-        /* Key Numbers Strip */
+        /* Numbers Strip */
         .numbers-strip {
             background: linear-gradient(90deg, var(--bg-card), rgba(18, 18, 26, 0.8), var(--bg-card));
-            padding: 60px 20px;
+            padding: 50px 20px;
             display: flex;
             justify-content: center;
-            gap: 80px;
+            gap: 60px;
             flex-wrap: wrap;
         }
 
@@ -379,28 +291,96 @@
         }
 
         .number-item .big {
-            font-size: 4rem;
+            font-size: 3.5rem;
             font-weight: 900;
             display: block;
             line-height: 1;
         }
 
         .number-item .desc {
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             color: var(--text-gray);
-            margin-top: 10px;
+            margin-top: 8px;
+        }
+
+        /* Winner Section */
+        .winner-section {
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.1), transparent);
+            border-radius: 24px;
+            padding: 60px 30px;
+            text-align: center;
+            border: 1px solid rgba(255, 215, 0, 0.2);
+            margin: 60px auto;
+            max-width: 800px;
+        }
+
+        .winner-badge {
+            font-size: 3rem;
+            margin-bottom: 15px;
+        }
+
+        .winner-section h2 {
+            font-size: 2rem;
+            font-weight: 800;
+            margin-bottom: 10px;
+            color: var(--accent-gold);
+        }
+
+        .winner-section p {
+            font-size: 1.1rem;
+            color: var(--text-gray);
+            max-width: 550px;
+            margin: 0 auto 25px;
+        }
+
+        .vs-comparison {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+
+        .vs-item {
+            text-align: center;
+            padding: 25px;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 16px;
+            min-width: 180px;
+        }
+
+        .vs-item.winner {
+            background: linear-gradient(135deg, rgba(0, 255, 136, 0.2), rgba(0, 255, 136, 0.05));
+            border: 2px solid var(--accent-green);
+        }
+
+        .vs-score {
+            font-size: 2.2rem;
+            font-weight: 900;
+        }
+
+        .vs-name {
+            font-size: 0.85rem;
+            color: var(--text-gray);
+            margin-top: 5px;
+        }
+
+        .vs-divider {
+            font-size: 1.3rem;
+            color: var(--text-gray);
         }
 
         /* Footer */
         footer {
             text-align: center;
-            padding: 80px 20px;
+            padding: 60px 20px;
             background: var(--bg-card);
         }
 
         footer h3 {
-            font-size: 1.5rem;
-            margin-bottom: 20px;
+            font-size: 1.3rem;
+            margin-bottom: 15px;
         }
 
         footer a {
@@ -415,8 +395,8 @@
         .footer-links {
             display: flex;
             justify-content: center;
-            gap: 30px;
-            margin-top: 30px;
+            gap: 20px;
+            margin-top: 25px;
             flex-wrap: wrap;
         }
 
@@ -425,9 +405,9 @@
             align-items: center;
             gap: 8px;
             color: var(--text-gray);
-            padding: 12px 24px;
+            padding: 10px 20px;
             background: rgba(255, 255, 255, 0.05);
-            border-radius: 10px;
+            border-radius: 8px;
             transition: all 0.2s;
         }
 
@@ -440,7 +420,7 @@
 </head>
 
 <body>
-    <!-- Hero - Maximum Impact -->
+    <!-- Hero -->
     <section class="hero">
         <div class="hero-content">
             <div class="hero-badge">Machine Learning Project</div>
@@ -458,15 +438,15 @@
 
             <div class="stats-row">
                 <div class="stat-item">
-                    <span class="stat-number" style="color: var(--accent-blue);">284K</span>
+                    <span class="stat-number" style="color: var(--accent-blue);">284,807</span>
                     <span class="stat-label">Transactions</span>
                 </div>
                 <div class="stat-item">
                     <span class="stat-number" style="color: var(--accent-red);">492</span>
-                    <span class="stat-label">Frauds</span>
+                    <span class="stat-label">Fraud Cases</span>
                 </div>
                 <div class="stat-item">
-                    <span class="stat-number" style="color: var(--accent-gold);">9</span>
+                    <span class="stat-number" style="color: var(--accent-gold);">12</span>
                     <span class="stat-label">Models Tested</span>
                 </div>
                 <div class="stat-item">
@@ -483,40 +463,40 @@
         </div>
     </section>
 
-    <!-- Summary Dashboard - Featured -->
+    <!-- ML Results - Featured -->
     <section class="section">
         <div class="section-header">
-            <h2>The Complete Picture</h2>
-            <p>One dashboard. All insights.</p>
+            <h2>Complete ML Results</h2>
+            <p>12 models tested. One winner.</p>
         </div>
         <div class="viz-showcase">
             <div class="viz-item featured">
-                <img src="graphs/06_summary_dashboard.png" alt="Summary Dashboard">
+                <img src="graphs/07_ml_results.png" alt="ML Results">
             </div>
         </div>
     </section>
 
-    <!-- The Challenge -->
+    <!-- Numbers -->
     <div class="numbers-strip">
         <div class="number-item">
-            <span class="big" style="color: var(--accent-red);">0.17%</span>
+            <span class="big" style="color: var(--accent-red);">0.173%</span>
             <span class="desc">Fraud Rate</span>
         </div>
         <div class="number-item">
-            <span class="big" style="color: var(--accent-gold);">$24B</span>
-            <span class="desc">Global Card Fraud (2023)</span>
+            <span class="big" style="color: var(--accent-gold);">88.49%</span>
+            <span class="desc">Original Score</span>
         </div>
         <div class="number-item">
-            <span class="big" style="color: var(--accent-green);">91%</span>
-            <span class="desc">Detection Rate</span>
+            <span class="big" style="color: var(--accent-green);">91.04%</span>
+            <span class="desc">After Augmentation</span>
         </div>
     </div>
 
     <!-- Data Analysis -->
     <section class="section">
         <div class="section-header">
-            <h2>Understanding the Data</h2>
-            <p>Pattern recognition starts with exploration</p>
+            <h2>Data Exploration</h2>
+            <p>Understanding the patterns</p>
         </div>
         <div class="viz-showcase">
             <div class="viz-item">
@@ -525,7 +505,7 @@
                     <div class="viz-icon" style="background: rgba(255, 71, 87, 0.2); color: var(--accent-red);">!</div>
                     <div>
                         <h3>Extreme Imbalance</h3>
-                        <p>Only 492 frauds in 284K transactions</p>
+                        <p>Only 492 frauds in 284,807 transactions</p>
                     </div>
                 </div>
             </div>
@@ -543,34 +523,33 @@
             <div class="viz-item">
                 <img src="graphs/03_time_analysis.png" alt="Time Analysis">
                 <div class="viz-caption">
-                    <div class="viz-icon" style="background: rgba(255, 215, 0, 0.2); color: var(--accent-gold);">⏱</div>
+                    <div class="viz-icon" style="background: rgba(255, 215, 0, 0.2); color: var(--accent-gold);">T</div>
                     <div>
-                        <h3>When They Strike</h3>
-                        <p>Fraud timing patterns revealed</p>
+                        <h3>Temporal Patterns</h3>
+                        <p>Fraud timing throughout the day</p>
                     </div>
                 </div>
             </div>
             <div class="viz-item">
                 <img src="graphs/04_feature_correlation.png" alt="Feature Correlation">
                 <div class="viz-caption">
-                    <div class="viz-icon" style="background: rgba(0, 255, 136, 0.2); color: var(--accent-green);">⚡
+                    <div class="viz-icon" style="background: rgba(0, 255, 136, 0.2); color: var(--accent-green);">~
                     </div>
                     <div>
-                        <h3>Predictive Features</h3>
-                        <p>V14 & V17 drive detection</p>
+                        <h3>Feature Correlations</h3>
+                        <p>V14, V17, V12 most correlated with fraud</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Winner Section -->
+    <!-- Winner -->
     <section class="section">
         <div class="winner-section">
-            <div class="winner-badge">🏆</div>
+            <div class="winner-badge">&#127942;</div>
             <h2>XGBoost Wins</h2>
-            <p>Gradient boosting crushed deep learning on this tabular dataset. Data augmentation pushed accuracy from
-                88% to 91%.</p>
+            <p>Gradient boosting with data augmentation crushed 11 other models including deep learning.</p>
 
             <div class="vs-comparison">
                 <div class="vs-item winner">
@@ -586,36 +565,67 @@
         </div>
     </section>
 
-    <!-- Model Comparison -->
+    <!-- Model Deep Dive -->
     <section class="section">
         <div class="section-header">
-            <h2>Model Showdown</h2>
-            <p>9 algorithms. One winner.</p>
+            <h2>Model Analysis</h2>
+            <p>Understanding what drives the predictions</p>
         </div>
         <div class="viz-showcase">
-            <div class="viz-item featured">
-                <img src="graphs/05_model_comparison.png" alt="Model Comparison">
+            <div class="viz-item">
+                <img src="graphs/09_feature_importance.png" alt="Feature Importance">
+                <div class="viz-caption">
+                    <div class="viz-icon" style="background: rgba(255, 215, 0, 0.2); color: var(--accent-gold);">*</div>
+                    <div>
+                        <h3>Feature Importance</h3>
+                        <p>V14 + V17 account for 34% of decisions</p>
+                    </div>
+                </div>
+            </div>
+            <div class="viz-item">
+                <img src="graphs/08_confusion_threshold.png" alt="Threshold Analysis">
+                <div class="viz-caption">
+                    <div class="viz-icon" style="background: rgba(79, 172, 254, 0.2); color: var(--accent-blue);">=
+                    </div>
+                    <div>
+                        <h3>Threshold Trade-offs</h3>
+                        <p>Precision vs recall business impact</p>
+                    </div>
+                </div>
             </div>
             <div class="viz-item">
                 <img src="graphs/pr_curve.png" alt="PR Curve">
                 <div class="viz-caption">
-                    <div class="viz-icon" style="background: rgba(79, 172, 254, 0.2); color: var(--accent-blue);">📈
+                    <div class="viz-icon" style="background: rgba(0, 255, 136, 0.2); color: var(--accent-green);">^
                     </div>
                     <div>
-                        <h3>Precision-Recall Curve</h3>
-                        <p>The definitive metric for imbalanced data</p>
+                        <h3>PR Curve</h3>
+                        <p>Area under curve: 91.04%</p>
                     </div>
                 </div>
             </div>
             <div class="viz-item">
-                <img src="graphs/training_history.png" alt="Training History">
+                <img src="graphs/05_model_comparison.png" alt="Model Comparison">
                 <div class="viz-caption">
-                    <div class="viz-icon" style="background: rgba(255, 71, 87, 0.2); color: var(--accent-red);">🧠</div>
+                    <div class="viz-icon" style="background: rgba(163, 113, 247, 0.2); color: #a371f7;">|</div>
                     <div>
-                        <h3>Deep Learning Training</h3>
-                        <p>Neural nets converge but can't compete</p>
+                        <h3>All Models Ranked</h3>
+                        <p>Gradient boosting dominates</p>
                     </div>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Summary Dashboard -->
+    <section class="section">
+        <div class="section-header">
+            <h2>Summary Dashboard</h2>
+            <p>The complete picture</p>
+        </div>
+        <div class="viz-showcase">
+            <div class="viz-item featured">
+                <img src="graphs/06_summary_dashboard.png" alt="Summary Dashboard">
             </div>
         </div>
     </section>
@@ -623,36 +633,32 @@
     <!-- Footer -->
     <footer>
         <h3>Built to Detect. Ready to Deploy.</h3>
-        <p style="color: var(--text-gray); margin-bottom: 20px;">
-            Model, scaler, and prediction script included for production use.
+        <p style="color: var(--text-gray); margin-bottom: 15px;">
+            Model, scaler, and prediction script included.
         </p>
 
         <div class="footer-links">
             <a href="https://github.com/Ericdataplus/credit-card-fraud-detect" class="footer-link" target="_blank">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
                     <path
                         d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
                 </svg>
                 View Code
             </a>
             <a href="https://www.kaggle.com/datasets/mlg-ulb/creditcardfraud" class="footer-link" target="_blank">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
                     <path
                         d="M18.825 23.859c-.022.092-.117.141-.281.141h-3.139c-.187 0-.351-.082-.492-.248l-5.178-6.589-1.448 1.374v5.111c0 .234-.117.352-.351.352H5.505c-.236 0-.354-.118-.354-.352V.353c0-.233.118-.353.354-.353h2.431c.234 0 .351.12.351.353v14.343l6.203-6.272c.165-.165.33-.246.495-.246h3.239c.144 0 .236.06.285.18.046.149.034.255-.036.315l-6.555 6.344 6.836 8.507c.095.104.117.208.071.358z" />
                 </svg>
                 Kaggle Dataset
             </a>
             <a href="https://github.com/Ericdataplus" class="footer-link" target="_blank">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <circle cx="12" cy="12" r="10" />
-                    <path d="M12 16v-4M12 8h.01" />
-                </svg>
                 Ericdataplus
             </a>
         </div>
 
-        <p style="margin-top: 40px; color: var(--text-gray); font-size: 0.85rem;">
-            Built with Python, XGBoost, PyTorch & Scikit-learn | December 2024
+        <p style="margin-top: 30px; color: var(--text-gray); font-size: 0.8rem;">
+            Python | XGBoost | PyTorch | Scikit-learn | Optuna | December 2024
         </p>
     </footer>
 </body>
