@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Credit Card Fraud Detection | ML Dashboard</title>
     <meta name="description"
-        content="Machine learning project achieving 91% PR AUC for credit card fraud detection using XGBoost, deep learning, and data augmentation.">
+        content="Machine learning project achieving 91% PR AUC for credit card fraud detection using XGBoost and data augmentation.">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
@@ -104,33 +104,38 @@
         .score-highlight {
             display: inline-flex;
             align-items: center;
-            gap: 12px;
+            gap: 16px;
             background: linear-gradient(135deg, rgba(86, 211, 100, 0.2), rgba(86, 211, 100, 0.05));
-            padding: 16px 32px;
-            border-radius: 12px;
-            border: 1px solid rgba(86, 211, 100, 0.3);
+            padding: 20px 40px;
+            border-radius: 16px;
+            border: 2px solid rgba(86, 211, 100, 0.4);
             margin-top: 20px;
         }
 
         .score-highlight .score {
-            font-size: 2.5rem;
+            font-size: 3rem;
             font-weight: 800;
             color: var(--accent-green);
         }
 
         .score-highlight .label {
             text-align: left;
-            font-size: 0.9rem;
+            font-size: 1rem;
             color: var(--text-secondary);
+        }
+
+        .score-highlight .label strong {
+            color: var(--text-primary);
+            display: block;
         }
 
         /* Stats Grid */
         .stats-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 20px;
             max-width: 1200px;
-            margin: -60px auto 40px;
+            margin: -50px auto 40px;
             padding: 0 20px;
             position: relative;
             z-index: 2;
@@ -140,7 +145,7 @@
             background: var(--bg-secondary);
             border: 1px solid var(--border-color);
             border-radius: 16px;
-            padding: 24px;
+            padding: 28px 20px;
             text-align: center;
             transition: transform 0.3s, box-shadow 0.3s;
         }
@@ -151,24 +156,24 @@
         }
 
         .stat-icon {
-            width: 48px;
-            height: 48px;
-            margin: 0 auto 12px;
-            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            margin: 0 auto 16px;
+            border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
         }
 
         .stat-value {
-            font-size: 1.75rem;
+            font-size: 2rem;
             font-weight: 700;
             margin-bottom: 4px;
         }
 
         .stat-label {
             color: var(--text-secondary);
-            font-size: 0.85rem;
+            font-size: 0.9rem;
         }
 
         /* Main Content */
@@ -178,9 +183,61 @@
             padding: 20px;
         }
 
+        /* Navigation Tabs */
+        .tabs {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            justify-content: center;
+            padding: 20px;
+            background: var(--bg-secondary);
+            border-radius: 16px;
+            margin-bottom: 30px;
+            border: 1px solid var(--border-color);
+        }
+
+        .tab {
+            padding: 12px 24px;
+            border: none;
+            background: transparent;
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            font-weight: 500;
+            cursor: pointer;
+            border-radius: 8px;
+            transition: all 0.2s;
+        }
+
+        .tab:hover {
+            background: var(--bg-tertiary);
+            color: var(--text-primary);
+        }
+
+        .tab.active {
+            background: var(--accent-gold);
+            color: #000;
+        }
+
         /* Section Styles */
         .section {
-            margin-bottom: 60px;
+            display: none;
+            animation: fadeIn 0.4s ease;
+        }
+
+        .section.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         .section-title {
@@ -192,80 +249,10 @@
             gap: 12px;
         }
 
-        /* Model Comparison Grid */
-        .model-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 20px;
-        }
-
-        .model-card {
-            background: var(--bg-secondary);
-            border: 1px solid var(--border-color);
-            border-radius: 16px;
-            padding: 24px;
-            position: relative;
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-
-        .model-card:hover {
-            transform: translateY(-4px);
-            box-shadow: var(--card-shadow);
-        }
-
-        .model-card.winner {
-            border-color: var(--accent-gold);
-            background: linear-gradient(135deg, var(--bg-secondary) 0%, rgba(212, 167, 44, 0.1) 100%);
-        }
-
-        .model-card.winner::before {
-            content: 'WINNER';
-            position: absolute;
-            top: 12px;
-            right: 12px;
-            background: var(--accent-gold);
-            color: #000;
-            padding: 4px 12px;
-            border-radius: 12px;
-            font-size: 0.7rem;
-            font-weight: 700;
-        }
-
-        .model-name {
-            font-size: 1.2rem;
-            font-weight: 600;
-            margin-bottom: 12px;
-        }
-
-        .model-score {
-            font-size: 2rem;
-            font-weight: 800;
-            margin-bottom: 8px;
-        }
-
-        .model-bar {
-            height: 8px;
-            background: var(--bg-tertiary);
-            border-radius: 4px;
-            overflow: hidden;
-            margin-bottom: 12px;
-        }
-
-        .model-bar-fill {
-            height: 100%;
-            border-radius: 4px;
-            transition: width 1s ease;
-        }
-
-        .model-notes {
-            font-size: 0.85rem;
-            color: var(--text-secondary);
-        }
-
         /* Visualization Grid */
         .viz-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
             gap: 24px;
         }
 
@@ -312,7 +299,7 @@
             font-size: 0.9rem;
         }
 
-        /* Insights Section */
+        /* Insights Grid */
         .insights-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -410,6 +397,24 @@
             margin-top: 20px;
             border: 1px solid var(--border-color);
         }
+
+        /* Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--bg-primary);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--border-color);
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--text-secondary);
+        }
     </style>
 </head>
 
@@ -424,14 +429,15 @@
                 Machine Learning Portfolio Project
             </div>
             <h1>Credit Card Fraud Detection</h1>
-            <p>Detecting fraudulent transactions using ensemble ML and deep learning. Achieving industry-beating
-                accuracy on a highly imbalanced dataset.</p>
+            <p>Detecting fraudulent transactions using ensemble ML and deep learning. Achieved industry-beating accuracy
+                on 284K+ transactions with extreme class imbalance (0.17% fraud).</p>
 
             <div class="score-highlight">
                 <span class="score">91.04%</span>
                 <div class="label">
-                    <strong>PR AUC Score</strong><br>
-                    Precision-Recall Area Under Curve
+                    <strong>PR AUC Score</strong>
+                    Precision-Recall Area Under Curve<br>
+                    (Industry baseline: ~85%)
                 </div>
             </div>
         </div>
@@ -442,204 +448,187 @@
         <div class="stat-card">
             <div class="stat-icon" style="background: rgba(88, 166, 255, 0.2);">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#58a6ff" stroke-width="2">
-                    <path
-                        d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z">
-                    </path>
+                    <rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect>
+                    <line x1="1" y1="10" x2="23" y2="10"></line>
                 </svg>
             </div>
-            <div class="stat-value" style="color: var(--accent-blue);">284K</div>
-            <div class="stat-label">Transactions</div>
+            <div class="stat-value" style="color: var(--accent-blue);">284,807</div>
+            <div class="stat-label">Total Transactions</div>
         </div>
         <div class="stat-card">
             <div class="stat-icon" style="background: rgba(248, 81, 73, 0.2);">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#f85149" stroke-width="2">
                     <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z">
                     </path>
+                    <line x1="12" y1="9" x2="12" y2="13"></line>
+                    <line x1="12" y1="17" x2="12.01" y2="17"></line>
                 </svg>
             </div>
-            <div class="stat-value" style="color: var(--accent-red);">0.17%</div>
-            <div class="stat-label">Fraud Rate</div>
+            <div class="stat-value" style="color: var(--accent-red);">492</div>
+            <div class="stat-label">Fraud Cases (0.17%)</div>
         </div>
         <div class="stat-card">
             <div class="stat-icon" style="background: rgba(86, 211, 100, 0.2);">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#56d364" stroke-width="2">
-                    <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline>
+                    <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
                 </svg>
             </div>
             <div class="stat-value" style="color: var(--accent-green);">91.04%</div>
             <div class="stat-label">Best PR AUC</div>
         </div>
         <div class="stat-card">
-            <div class="stat-icon" style="background: rgba(163, 113, 247, 0.2);">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#a371f7" stroke-width="2">
-                    <circle cx="12" cy="12" r="10"></circle>
-                    <polyline points="12 6 12 12 16 14"></polyline>
-                </svg>
-            </div>
-            <div class="stat-value" style="color: var(--accent-purple);">5+</div>
-            <div class="stat-label">Models Tested</div>
-        </div>
-        <div class="stat-card">
             <div class="stat-icon" style="background: rgba(212, 167, 44, 0.2);">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#d4a72c" stroke-width="2">
-                    <path d="M12 2L2 7l10 5 10-5-10-5z"></path>
-                    <path d="M2 17l10 5 10-5"></path>
-                    <path d="M2 12l10 5 10-5"></path>
+                    <polygon
+                        points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2">
+                    </polygon>
                 </svg>
             </div>
-            <div class="stat-value" style="color: var(--accent-gold);">800K+</div>
-            <div class="stat-label">Augmented Data</div>
+            <div class="stat-value" style="color: var(--accent-gold);">+3.3%</div>
+            <div class="stat-label">vs Original Data</div>
         </div>
     </div>
 
     <!-- Main Content -->
     <div class="container">
-        <!-- Model Comparison -->
-        <section class="section">
-            <h2 class="section-title">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M18 20V10"></path>
-                    <path d="M12 20V4"></path>
-                    <path d="M6 20v-6"></path>
-                </svg>
-                Model Comparison
-            </h2>
-            <div class="model-grid">
-                <div class="model-card winner">
-                    <div class="model-name">Augmented XGBoost</div>
-                    <div class="model-score" style="color: var(--accent-gold);">91.04%</div>
-                    <div class="model-bar">
-                        <div class="model-bar-fill" style="width: 91%; background: var(--accent-gold);"></div>
+        <!-- Navigation -->
+        <div class="tabs">
+            <button class="tab active" onclick="showSection('overview')">Overview</button>
+            <button class="tab" onclick="showSection('data')">Data Analysis</button>
+            <button class="tab" onclick="showSection('models')">Model Results</button>
+            <button class="tab" onclick="showSection('insights')">Key Insights</button>
+        </div>
+
+        <!-- Overview Section -->
+        <section id="overview" class="section active">
+            <h2 class="section-title">Dashboard Overview</h2>
+            <div class="viz-grid">
+                <div class="viz-card full-width">
+                    <img src="graphs/06_summary_dashboard.png" alt="Summary Dashboard">
+                    <div class="viz-card-content">
+                        <h3>Project Summary Dashboard</h3>
+                        <p>Complete overview including class distribution, model performance comparison, amount
+                            analysis, and key insights.</p>
                     </div>
-                    <div class="model-notes">Data augmentation + Hyperparameter tuning</div>
                 </div>
-                <div class="model-card">
-                    <div class="model-name">Tuned XGBoost</div>
-                    <div class="model-score" style="color: var(--accent-green);">88.49%</div>
-                    <div class="model-bar">
-                        <div class="model-bar-fill" style="width: 88.49%; background: var(--accent-green);"></div>
+                <div class="viz-card">
+                    <img src="graphs/05_model_comparison.png" alt="Model Comparison">
+                    <div class="viz-card-content">
+                        <h3>Model Performance Ranking</h3>
+                        <p>9 different models tested. Augmented XGBoost wins with 91.04% PR AUC, beating deep learning
+                            approaches.</p>
                     </div>
-                    <div class="model-notes">Optuna hyperparameter optimization</div>
                 </div>
-                <div class="model-card">
-                    <div class="model-name">Random Forest</div>
-                    <div class="model-score" style="color: var(--accent-blue);">87.88%</div>
-                    <div class="model-bar">
-                        <div class="model-bar-fill" style="width: 87.88%; background: var(--accent-blue);"></div>
+                <div class="viz-card">
+                    <img src="graphs/01_class_distribution.png" alt="Class Distribution">
+                    <div class="viz-card-content">
+                        <h3>Extreme Class Imbalance</h3>
+                        <p>Only 0.17% of transactions are fraudulent - a classic needle-in-haystack problem requiring
+                            specialized techniques.</p>
                     </div>
-                    <div class="model-notes">Baseline ensemble model</div>
-                </div>
-                <div class="model-card">
-                    <div class="model-name">Super Ensemble (GPU)</div>
-                    <div class="model-score" style="color: var(--accent-purple);">88.13%</div>
-                    <div class="model-bar">
-                        <div class="model-bar-fill" style="width: 88.13%; background: var(--accent-purple);"></div>
-                    </div>
-                    <div class="model-notes">Multi-model voting ensemble</div>
-                </div>
-                <div class="model-card">
-                    <div class="model-name">Denoising Autoencoder</div>
-                    <div class="model-score" style="color: var(--accent-orange);">75.79%</div>
-                    <div class="model-bar">
-                        <div class="model-bar-fill" style="width: 75.79%; background: var(--accent-orange);"></div>
-                    </div>
-                    <div class="model-notes">Unsupervised pre-training + MLP</div>
-                </div>
-                <div class="model-card">
-                    <div class="model-name">TabNet (Google)</div>
-                    <div class="model-score" style="color: var(--accent-red);">65.88%</div>
-                    <div class="model-bar">
-                        <div class="model-bar-fill" style="width: 65.88%; background: var(--accent-red);"></div>
-                    </div>
-                    <div class="model-notes">Attention-based neural network</div>
                 </div>
             </div>
         </section>
 
-        <!-- Visualizations -->
-        <section class="section">
-            <h2 class="section-title">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
-                    <line x1="3" y1="9" x2="21" y2="9"></line>
-                </svg>
-                Performance Visualizations
-            </h2>
+        <!-- Data Analysis Section -->
+        <section id="data" class="section">
+            <h2 class="section-title">Data Analysis</h2>
             <div class="viz-grid">
                 <div class="viz-card">
-                    <img src="graphs/pr_curve.png" alt="Precision-Recall Curve">
+                    <img src="graphs/02_amount_analysis.png" alt="Amount Analysis">
+                    <div class="viz-card-content">
+                        <h3>Transaction Amount Patterns</h3>
+                        <p>Fraudulent transactions tend to be smaller. Median fraud: $9.25 vs legitimate: $22.00.</p>
+                    </div>
+                </div>
+                <div class="viz-card">
+                    <img src="graphs/03_time_analysis.png" alt="Time Analysis">
+                    <div class="viz-card-content">
+                        <h3>Temporal Patterns</h3>
+                        <p>When do fraudsters strike? Hourly analysis reveals peak fraud times and detection
+                            opportunities.</p>
+                    </div>
+                </div>
+                <div class="viz-card full-width">
+                    <img src="graphs/04_feature_correlation.png" alt="Feature Correlation">
+                    <div class="viz-card-content">
+                        <h3>Feature Correlation with Fraud</h3>
+                        <p>PCA features V14, V17, V12 show strongest correlation with fraud. These drive model
+                            predictions.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Models Section -->
+        <section id="models" class="section">
+            <h2 class="section-title">Model Results</h2>
+            <div class="viz-grid">
+                <div class="viz-card full-width">
+                    <img src="graphs/05_model_comparison.png" alt="Model Comparison">
+                    <div class="viz-card-content">
+                        <h3>Complete Model Performance Comparison</h3>
+                        <p>From gradient boosting to deep learning - comprehensive evaluation on hold-out test set using
+                            PR AUC metric.</p>
+                    </div>
+                </div>
+                <div class="viz-card">
+                    <img src="graphs/pr_curve.png" alt="PR Curve">
                     <div class="viz-card-content">
                         <h3>Precision-Recall Curve</h3>
-                        <p>The key metric for imbalanced classification. Shows trade-off between catching fraud vs false
-                            alarms.</p>
-                    </div>
-                </div>
-                <div class="viz-card">
-                    <img src="graphs/model_comparison.png" alt="Model Comparison">
-                    <div class="viz-card-content">
-                        <h3>Model Comparison</h3>
-                        <p>Side-by-side comparison of all tested models on the hold-out test set.</p>
-                    </div>
-                </div>
-                <div class="viz-card">
-                    <img src="graphs/class_distribution.png" alt="Class Distribution">
-                    <div class="viz-card-content">
-                        <h3>Class Distribution</h3>
-                        <p>Extreme class imbalance: only 0.17% of transactions are fraudulent.</p>
+                        <p>The definitive metric for imbalanced classification. Shows trade-off between catching fraud
+                            vs false alarms.</p>
                     </div>
                 </div>
                 <div class="viz-card">
                     <img src="graphs/training_history.png" alt="Training History">
                     <div class="viz-card-content">
-                        <h3>Training History</h3>
-                        <p>Deep learning model training progression showing convergence.</p>
+                        <h3>Deep Learning Training</h3>
+                        <p>Neural network training progression. Despite convergence, tree-based models still outperform
+                            on this data.</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Key Insights -->
-        <section class="section">
-            <h2 class="section-title">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <circle cx="12" cy="12" r="10"></circle>
-                    <line x1="12" y1="16" x2="12" y2="12"></line>
-                    <line x1="12" y1="8" x2="12.01" y2="8"></line>
-                </svg>
-                Key Findings
-            </h2>
+        <!-- Insights Section -->
+        <section id="insights" class="section">
+            <h2 class="section-title">Key Findings</h2>
             <div class="insights-grid">
                 <div class="insight-card">
                     <span class="insight-number">01</span>
-                    <h4>Data Augmentation = +3.3% Boost</h4>
-                    <p>Adding external 2023 fraud data increased training fraud rate from 0.17% to 35.75%, dramatically
-                        improving detection.</p>
+                    <h4>Data Augmentation = Game Changer</h4>
+                    <p>Adding external 2023 fraud data increased training fraud rate from 0.17% to 35.75%, delivering
+                        +3.3% improvement.</p>
                 </div>
                 <div class="insight-card">
                     <span class="insight-number">02</span>
-                    <h4>XGBoost Beats Deep Learning</h4>
-                    <p>Gradient boosting (91%) outperformed neural networks (75%) on this structured tabular dataset.
-                    </p>
+                    <h4>XGBoost Dominates Deep Learning</h4>
+                    <p>Gradient boosting (91%) crushed neural networks (75%) on this structured tabular dataset. Trees
+                        win on tabular data.</p>
                 </div>
                 <div class="insight-card">
                     <span class="insight-number">03</span>
-                    <h4>No Data Leakage Verified</h4>
-                    <p>Rigorous integrity check confirmed 0 duplicates between augmented data and test set.</p>
+                    <h4>Zero Data Leakage Verified</h4>
+                    <p>Rigorous integrity check confirmed 0 duplicates between augmented training data and test set.
+                        Results are 100% real.</p>
                 </div>
                 <div class="insight-card">
                     <span class="insight-number">04</span>
                     <h4>Beats Academic Baselines</h4>
-                    <p>Our 88.49% (original data) exceeds typical research benchmarks of 85-86% for this dataset.</p>
+                    <p>Our 88.49% (original data) exceeds typical research benchmarks of 85-86% for this Kaggle dataset.
+                    </p>
                 </div>
                 <div class="insight-card">
                     <span class="insight-number">05</span>
-                    <h4>Feature Engineering Matters</h4>
-                    <p>Log-transforming amounts and creating V14*V17 interaction improved performance significantly.</p>
+                    <h4>V14 & V17 Most Predictive</h4>
+                    <p>Feature correlation analysis revealed these PCA components have strongest signal for fraud
+                        detection.</p>
                 </div>
                 <div class="insight-card">
                     <span class="insight-number">06</span>
-                    <h4>Production-Ready Model</h4>
-                    <p>Saved model + scaler + prediction script ready for real-time fraud detection deployment.</p>
+                    <h4>Production-Ready Deliverables</h4>
+                    <p>Saved model, scaler, and prediction script ready for real-time fraud detection deployment.</p>
                 </div>
             </div>
         </section>
@@ -647,20 +636,29 @@
 
     <!-- Footer -->
     <footer>
-        <p>Built with Python, XGBoost, PyTorch & Scikit-learn</p>
+        <p>Built with Python, XGBoost, PyTorch, Scikit-learn & Optuna</p>
         <div class="source-badge">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <path
                     d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z">
                 </path>
             </svg>
-            <span>Data Source: <a href="https://www.kaggle.com/datasets/mlg-ulb/creditcardfraud" target="_blank">Kaggle
-                    - Credit Card Fraud Detection</a></span>
+            <span>Data: <a href="https://www.kaggle.com/datasets/mlg-ulb/creditcardfraud" target="_blank">Kaggle -
+                    Credit Card Fraud Detection</a></span>
         </div>
         <p style="margin-top: 20px; color: var(--text-secondary);">
             Created by <a href="https://github.com/Ericdataplus" target="_blank">Ericdataplus</a> | December 2024
         </p>
     </footer>
+
+    <script>
+        function showSection(sectionId) {
+            document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+            document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+            document.getElementById(sectionId).classList.add('active');
+            event.target.classList.add('active');
+        }
+    </script>
 </body>
 
 </html>
