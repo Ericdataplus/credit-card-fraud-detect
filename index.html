@@ -425,11 +425,13 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.95);
+            background: rgba(0, 0, 0, 0.98);
             z-index: 1000;
             justify-content: center;
             align-items: center;
             cursor: pointer;
+            padding: 10px;
+            touch-action: pan-y pinch-zoom;
         }
 
         .lightbox.active {
@@ -437,21 +439,29 @@
         }
 
         .lightbox img {
-            max-width: 95%;
-            max-height: 95%;
+            max-width: 100%;
+            max-height: 90vh;
             border-radius: 8px;
             box-shadow: 0 0 60px rgba(0, 0, 0, 0.8);
+            object-fit: contain;
         }
 
         .lightbox-close {
             position: absolute;
-            top: 20px;
-            right: 30px;
-            font-size: 40px;
+            top: 10px;
+            right: 15px;
+            font-size: 50px;
             color: #fff;
             cursor: pointer;
             transition: transform 0.2s;
             z-index: 1001;
+            background: rgba(0, 0, 0, 0.5);
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
         }
 
         .lightbox-close:hover {
@@ -466,6 +476,259 @@
 
         .viz-item img:hover {
             transform: scale(1.02);
+        }
+
+        /* ============================================ */
+        /* MOBILE RESPONSIVE STYLES */
+        /* ============================================ */
+
+        /* Tap hint for mobile */
+        .tap-hint {
+            display: none;
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0, 0, 0, 0.7);
+            color: #fff;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            pointer-events: none;
+            z-index: 5;
+        }
+
+        @media (max-width: 768px) {
+
+            /* Hero adjustments */
+            .hero {
+                padding: 60px 15px 80px;
+                min-height: auto;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+                line-height: 1.2;
+            }
+
+            .hero-subtitle {
+                font-size: 1rem;
+                margin-bottom: 30px;
+            }
+
+            .score-circle {
+                width: 160px;
+                height: 160px;
+            }
+
+            .score-inner {
+                width: 135px;
+                height: 135px;
+            }
+
+            .score-value {
+                font-size: 2.8rem;
+            }
+
+            .stats-row {
+                gap: 20px;
+            }
+
+            .stat-number {
+                font-size: 1.8rem;
+            }
+
+            .stat-label {
+                font-size: 0.7rem;
+            }
+
+            /* Viz grid - single column on mobile */
+            .viz-showcase {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+
+            /* Make viz items more tappable */
+            .viz-item {
+                border-radius: 12px;
+                position: relative;
+            }
+
+            .viz-item::after {
+                content: 'Tap to expand';
+                position: absolute;
+                bottom: 60px;
+                left: 50%;
+                transform: translateX(-50%);
+                background: rgba(0, 0, 0, 0.75);
+                color: #fff;
+                padding: 6px 14px;
+                border-radius: 15px;
+                font-size: 0.7rem;
+                opacity: 0.9;
+                pointer-events: none;
+            }
+
+            .viz-item img {
+                min-height: 200px;
+                object-fit: cover;
+            }
+
+            .viz-caption {
+                padding: 12px 15px;
+            }
+
+            .viz-icon {
+                width: 35px;
+                height: 35px;
+                font-size: 1rem;
+            }
+
+            .viz-caption h3 {
+                font-size: 0.9rem;
+            }
+
+            .viz-caption p {
+                font-size: 0.7rem;
+            }
+
+            /* Numbers strip */
+            .numbers-strip {
+                gap: 25px;
+                padding: 30px 15px;
+            }
+
+            .number-item .big {
+                font-size: 2.2rem;
+            }
+
+            .number-item .desc {
+                font-size: 0.75rem;
+            }
+
+            /* Winner section */
+            .winner-section {
+                padding: 40px 20px;
+                margin: 30px 15px;
+            }
+
+            .winner-badge {
+                font-size: 2.5rem;
+            }
+
+            .winner-section h2 {
+                font-size: 1.5rem;
+            }
+
+            .winner-section p {
+                font-size: 0.95rem;
+            }
+
+            .vs-comparison {
+                gap: 15px;
+            }
+
+            .vs-item {
+                padding: 20px 15px;
+                min-width: 140px;
+            }
+
+            .vs-score {
+                font-size: 1.6rem;
+            }
+
+            .vs-name {
+                font-size: 0.75rem;
+            }
+
+            /* Section headers */
+            .section {
+                padding: 50px 15px;
+            }
+
+            .section-header h2 {
+                font-size: 1.8rem;
+            }
+
+            .section-header p {
+                font-size: 0.95rem;
+            }
+
+            /* Lightbox mobile improvements */
+            .lightbox {
+                padding: 5px;
+            }
+
+            .lightbox img {
+                max-width: 100%;
+                max-height: 85vh;
+                border-radius: 4px;
+            }
+
+            .lightbox-close {
+                top: 5px;
+                right: 5px;
+                font-size: 36px;
+                width: 50px;
+                height: 50px;
+            }
+
+            /* Footer */
+            footer {
+                padding: 40px 15px;
+            }
+
+            footer h3 {
+                font-size: 1.1rem;
+            }
+
+            .footer-links {
+                gap: 10px;
+            }
+
+            .footer-link {
+                padding: 8px 15px;
+                font-size: 0.85rem;
+            }
+
+            /* Click hint banner */
+            .click-hint {
+                font-size: 0.75rem;
+                padding: 10px;
+            }
+        }
+
+        @media (max-width: 400px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .score-circle {
+                width: 140px;
+                height: 140px;
+            }
+
+            .score-inner {
+                width: 115px;
+                height: 115px;
+            }
+
+            .score-value {
+                font-size: 2.2rem;
+            }
+
+            .stats-row {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .vs-comparison {
+                flex-direction: column;
+            }
+
+            .vs-divider {
+                display: none;
+            }
         }
     </style>
 </head>
@@ -742,17 +1005,56 @@
 
     <!-- Lightbox Modal -->
     <div class="lightbox" id="lightbox">
+        <span class="lightbox-close" id="lightbox-close">&times;</span>
         <img id="lightbox-img" src="" alt="Expanded view">
     </div>
 
     <script>
         const lightbox = document.getElementById('lightbox');
         const lightboxImg = document.getElementById('lightbox-img');
+        const lightboxClose = document.getElementById('lightbox-close');
+
+        // Open lightbox on image click/tap
         document.querySelectorAll('.viz-item img').forEach(img => {
-            img.addEventListener('click', () => { lightboxImg.src = img.src; lightbox.classList.add('active'); document.body.style.overflow = 'hidden'; });
+            img.addEventListener('click', (e) => {
+                e.stopPropagation();
+                lightboxImg.src = img.src;
+                lightbox.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            });
+
+            // Touch support
+            img.addEventListener('touchend', (e) => {
+                e.preventDefault();
+                lightboxImg.src = img.src;
+                lightbox.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            });
         });
-        lightbox.addEventListener('click', () => { lightbox.classList.remove('active'); document.body.style.overflow = 'auto'; });
-        document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && lightbox.classList.contains('active')) { lightbox.classList.remove('active'); document.body.style.overflow = 'auto'; } });
+
+        // Close lightbox
+        function closeLightbox() {
+            lightbox.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        lightbox.addEventListener('click', closeLightbox);
+        lightboxClose.addEventListener('click', (e) => {
+            e.stopPropagation();
+            closeLightbox();
+        });
+
+        // Keyboard support
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && lightbox.classList.contains('active')) {
+                closeLightbox();
+            }
+        });
+
+        // Prevent image click from closing (only background click closes)
+        lightboxImg.addEventListener('click', (e) => {
+            e.stopPropagation();
+        });
     </script>
 </body>
 
